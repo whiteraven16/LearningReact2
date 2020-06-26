@@ -1,0 +1,36 @@
+<!Doctype html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>Ejemplos React</title>
+    </head>
+    <body>
+        <!--Contenedor objetivo-->
+        <div id="root"></div>
+        <!--React librery & ReactDOM (version de desarrollo)-->
+        <script
+            src="https://unpkg.com/react@16/umd/react.development.js">
+        </script>
+        <script
+            src="https://unpkg.com/react-dom@16/umd/react-dom.development.js">
+        </script>        
+        <script>
+        //puro React y JS 
+        const originalDish =React.createElement("h2",{id:"recipe-0"},"Baked Salmon");
+        const dish=React.createElement("h1",null,"Baked Salmon");
+        const list=React.createElement(
+                                        "ul",
+                                         null,
+                                         React.createElement("li",null,"2 lb salmon"),
+                                         React.createElement("li",null,"5 sprigs fresh rosemary"),
+                                         React.createElement("li",null,"2 tablespoons olive oil"),
+                                         React.createElement("li",null,"2 small lemons"),
+                                         React.createElement("li",null,"1 teaspoon kosher salt"),
+                                         React.createElement("li",null,"4 cloves of chopped garlic")
+                                      );
+
+        //ReactDOM.render(originalDish,document.getElementById("root"));
+        ReactDOM.render([dish,originalDish,list],document.getElementById("root"));
+        </script>
+    </body>
+</html>
