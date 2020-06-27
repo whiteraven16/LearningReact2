@@ -1,0 +1,167 @@
+<!Doctype html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>Ejemplos React</title>
+    </head>
+    <body>
+        <!--Contenedor objetivo-->
+        <div id="root"></div>
+        <!--React librery & ReactDOM (version de desarrollo)-->
+        <script
+            src="https://unpkg.com/react@16/umd/react.development.js">
+        </script>
+        <script 
+            src="https://unpkg.com/@babel/standalone/babel.min.js">
+        </script>
+        <script
+            src="https://unpkg.com/react-dom@16/umd/react-dom.development.js">
+        </script>     
+        <script type="text/babel">
+        // JSX code here. Or link to separate JavaScript file that contains JSX.
+        const data=[
+            {
+                name:"Baked Salmon",
+                ingredients:
+                [
+                    {name:"Salmon",amount:1,measurement:"l lb"},
+                    {name:"Pine Nuts",amount:1,measurement:"cup"},
+                    {name:"Butter Lettuce",amount:2,measurement:"cups"},
+                    {name:"Yellow Squash",amount:1,measurement:"med"},
+                    {name:"Olive Oil",amount:0.5,measurement:"cup"},
+                    {name:"Garlic",amount:3,measurement:"cloves"}
+                ],
+                steps:
+                [
+                    "Preheat the oven to 350 degrees.",
+                    "Spread the olive oil around a glass baking dish.",
+                    "Add the yellow squash and place in the oven for 30 mins.",
+                    "Add the salmon, garlic, and pine nuts to the dish.",
+                    "Bake for 15 minutes.",
+                    "Remove from oven. Add the lettuce and serve."
+                ]
+            },
+            {
+                name:"Fish Tacos",
+                ingredients:
+                [
+                    {name:"Whitefish",amount:1,measurement:"l lb"},
+                    {name:"Cheese",amount:1,measurement:"cup"},
+                    {name:"Iceberg Lettuce",amount:2,measurement:"cups"},
+                    {name:"Tomatoes",amount:2,measurement:"large"},
+                    {name:"Tortillas",amount:3,measurement:"med"}
+                ],
+                steps:
+                [
+                    "Cook the fish on the grill until cooked through.",
+                    "Place the fish on the 3 tortillas.",
+                    "Top them with lettuce, tomatoes, and cheese."
+                ]
+            }
+        ];
+        function Recipe({name,ingredients,steps})
+        {
+            return (
+                <section id={name.toLowerCase().replace(/ /g,"-")}>
+                <h1>{name}</h1>
+                <ul className="ingredients">
+                    {ingredients.map((ingredient,i)=>(
+                        <li key={i}>{ingredient.name}</li>
+                    ))}
+                </ul>
+                    <section className="instructions">
+                        <h2>Cooking instructions</h2>
+                        {steps.map((step,i)=>(
+                            <p key={i}>{step}</p>
+                        ))}
+                    </section>
+                </section>        
+
+            );
+        }
+        function Menu({title,recipes}){
+            return(
+                <article>
+                    <header>
+                        <h1>{title}</h1>
+                    </header>
+                    <div className="recipes">
+                        {recipes.map((recipe,i)=>
+                        <Recipe key={i} {...recipe}/>
+                        )}
+                    </div>
+                </article>
+            );   
+        }
+        ReactDOM.render(
+            <Menu recipes={data} title="Delicios Recipes"/>,
+            document.getElementById("root")
+        );
+        </script>
+   
+
+        <script>
+            /**
+        //puro React y JS 
+        const items=["1 k salmon","5 espigas de romero fresco","2 cucharaditas de aceite de oliva","2 limones pequeños","1 cucharadita de sal","4 cabezas de ajo picado"]
+        const secretIngredients=["1 cup unsalted butter","1 cup crunchy peanut butter","1 cup brown sugar","1 cup white sugar","2 eggs","2.5 cups all purpose flour","1 teaspoon baking powder","0.5 teaspoon salt"];
+        
+        const content= React.createElement(
+         "section",
+         {id:"salmon-horneado"},
+         React.createElement("h1",null,"Salmon Hornado"),
+         React.createElement(
+          "ul",
+          {className:"ingredients"},
+          items.map((ingrediente,i)=>
+            React.createElement("li",{key:i},ingrediente)
+          )
+         ),
+         React.createElement(
+             "section",
+             {className:"instructions"},
+             React.createElement("h2",null,"Instruciones para cocinar"),
+             React.createElement("p",null,"Precanlentar el horno a 375 grados"),
+             React.createElement("p",null,"Cubrir una bandeja de aluminio con aceite"),
+             React.createElement("p",null,"Colocar el salmon en la bandeja"),
+             React.createElement(
+                 "p",
+                 null,
+                 "Cubrir con el romero, los limones rebanados y el ajo picado"
+             ),
+             React.createElement(
+                 "p",
+                 null,
+                 "Hornear por 15-20 minutos hasta que este cocido"
+
+             ),
+             React.createElement("p",null,"Sacar del horno")
+         )
+
+
+
+        );
+
+        function IngredientsList({items}){
+            
+            return React.createElement(
+                    "ul",
+                    {className:"ingredients"},
+                    items.map((ingredient,i)=>
+                        React.createElement("li",{key:i},ingredient)
+                        )
+                    );
+        }
+        //ReactDOM.render(originalDish,document.getElementById("root"));
+        ReactDOM.render(
+            [
+                content,
+                React.createElement(IngredientsList,{items:secretIngredients},null)
+            ],
+            document.getElementById("root")
+        );  
+        **/
+          
+        </script>
+    </body>
+</html>
