@@ -16,6 +16,9 @@
         </script>        
         <script>
         //puro React y JS 
+        const items=["1 k salmon","5 espigas de romero fresco","2 cucharaditas de aceite de oliva","2 limones pequeños","1 cucharadita de sal","4 cabezas de ajo picado"]
+        const secretIngredients=["1 cup unsalted butter","1 cup crunchy peanut butter","1 cup brown sugar","1 cup white sugar","2 eggs","2.5 cups all purpose flour","1 teaspoon baking powder","0.5 teaspoon salt"];
+        
         const content= React.createElement(
          "section",
          {id:"salmon-horneado"},
@@ -23,12 +26,9 @@
          React.createElement(
           "ul",
           {className:"ingredients"},
-          React.createElement("li",null,"1 k salmon"),
-          React.createElement("li",null,"5 espigas de romero fresco"),
-          React.createElement("li",null,"2 cucharaditas de aceite de oliva"),
-          React.createElement("li",null,"2 limones pequeños"),
-          React.createElement("li",null,"1 cucharadita de sal"),
-          React.createElement("li",null,"4 cabezas de ajo picado")
+          items.map((ingrediente,i)=>
+            React.createElement("li",{key:i},ingrediente)
+          )
          ),
          React.createElement(
              "section",
@@ -55,8 +55,24 @@
 
         );
 
+        function IngredientsList({items}){
+            
+            return React.createElement(
+                    "ul",
+                    {className:"ingredients"},
+                    items.map((ingredient,i)=>
+                        React.createElement("li",{key:i},ingredient)
+                        )
+                    );
+        }
         //ReactDOM.render(originalDish,document.getElementById("root"));
-        ReactDOM.render(content,document.getElementById("root"));
+        ReactDOM.render(
+            [
+                content,
+                React.createElement(IngredientsList,{items:secretIngredients},null)
+            ],
+            document.getElementById("root")
+        );        
         </script>
     </body>
 </html>
