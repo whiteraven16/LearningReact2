@@ -14,8 +14,7 @@ export default function StartRating(){
 }
 */
 const createArray=length=>[...Array(length)];
-export default function StartRating({style={},totalStar=5,...props}){
-    const [selectedStars,setSelectedStars]=useState(0);
+export default function StartRating({style={},totalStar=5,selectedStars=0,...props}){
 
     return (
         
@@ -23,7 +22,7 @@ export default function StartRating({style={},totalStar=5,...props}){
         {createArray(totalStar).map((n,i)=>(
         <Star key={i} 
         selected={selectedStars>i}
-        onSelect={()=>setSelectedStars(i+1)}
+        
         />
         ))}
         <p>

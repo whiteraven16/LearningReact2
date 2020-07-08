@@ -1,19 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useState} from 'react';
+import colorData from "./color-data.json";
 import './App.css';
-import StarRating from "./components/StarRating"
+
+import ColorList from "./components/ColorList.js"
 
 function App() {
+  const [colors]=useState(colorData);
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Hola vale</h1>
-        <StarRating totalStar={5} 
-          style={{backgroundColor:"lightblue"}}
-          onDoubleClick={e=>alert("double click")}
-        />
-      </header>
-      
+      <ColorList colors={colors}/>
     </div>
   );
 }
