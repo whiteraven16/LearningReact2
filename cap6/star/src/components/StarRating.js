@@ -14,14 +14,15 @@ export default function StartRating(){
 }
 */
 const createArray=length=>[...Array(length)];
-export default function StartRating({style={},totalStar=5,selectedStars=0,...props}){
+export default function StartRating({style={},totalStar=5,selectedStars=0,onRate=f=>f}){
 
     return (
         
-        <div style= {{padding:"5px",...style}} {...props}>
+        <div style= {{padding:"5px",...style}} >
         {createArray(totalStar).map((n,i)=>(
         <Star key={i} 
         selected={selectedStars>i}
+        onSelect={()=>onRate(1+i)}
         
         />
         ))}
